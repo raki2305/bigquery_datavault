@@ -1,5 +1,5 @@
 -- Determine modified and new customer
-DECLARE changed_customer ARRAY<STRUCT<source STRING, first_name	STRING, last_name STRING, age INT64, street STRING, city STRING, hash_customer BYTES, hash_diff BYTES>>; --Das Array enthält nachfolgend alle der veränderten und neuen Daten
+DECLARE changed_customer ARRAY<STRUCT<source STRING, first_name	STRING, last_name STRING, age INT64, street STRING, city STRING, hash_customer BYTES, hash_diff BYTES>>; --The array contains all of the changed and new data below
 
 SET changed_customer =
 (SELECT
