@@ -8,7 +8,7 @@ SET changed_customer =
       MD5(CONCAT(customer.first_name, customer.last_name, CAST(customer.age AS STRING), customer.street, customer.city)))
       )
     FROM
-      `de-ist-energy-datalake.datavault_test.sat_customer` AS sat
+      `your_project.datavault_test.sat_customer` AS sat
     RIGHT JOIN
       `de-ist-energy-datalake.datavault_test.customer` AS customer
     ON
@@ -20,11 +20,11 @@ SET changed_customer =
 
 --Delete obsolete data
 DELETE
-  `de-ist-energy-datalake.datavault_test.sat_customer` as sat
+  `your_project.datavault_test.sat_customer` as sat
 WHERE sat.hash_customer IN (SELECT hash_customer from UNNEST(changed_customer) as customer_id);
 
 --Neue und veränderte Daten hinzufügen
-INSERT INTO `de-ist-energy-datalake.datavault_test.sat_customer`
+INSERT INTO `your_project.datavault_test.sat_customer`
 SELECT 
 hash_customer, 
 CURRENT_TIMESTAMP(),
